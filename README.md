@@ -86,8 +86,8 @@ Contributions are welcome! Feel free to:
 
 ## Links
 
-- **GitHub Repository**: [Your Repository Link]
-- **Live Application**: [Your Deployment Link]  
+- **GitHub Repository**: https://github.com/PARAG-TIWARI/ai-powered-course-generator
+-  
 
 ---
 
