@@ -1,96 +1,173 @@
-# CourseHub - AI-Powered Course Generator
+# CourseHub AI – AI Powered Course Generator
 
-An intelligent platform for creating personalized AI-generated coding courses with seamless video integration.
-
-## Overview
-
-AI Course Generator is a web application built with **Next.js** to create and manage personalized coding courses. This project leverages the power of **Gemini** for generating course content and integrates **YouTube videos** using the YouTube Data API v3, tailoring course materials to users' preferences and learning needs.
-
----
+CourseHub AI is a full-stack AI-powered learning platform that generates structured educational courses using Google Gemini AI. Users can create personalized learning roadmaps, generate chapter-wise content, discover relevant video resources, and manage courses through an authenticated dashboard.
 
 ## Features
 
-- **AI-Generated Content**: Automatically generate coding course materials using Gemini.
-- **Video Integration**: Seamless YouTube video integration via YouTube Data API v3 to enrich learning.
-- **User Management**: Secure user authentication powered by [Clerk](https://clerk.dev).
-- **Optimized Performance**: Built with modern web technologies like Next.js and Tailwind CSS for styling.
-- **Responsive Design**: Fully responsive and mobile-friendly.
+### AI Course Generation
+
+* Generate complete course structures using Gemini AI
+* Automatic chapter creation
+* Course descriptions and learning paths
+* Multiple difficulty levels
+
+### Dynamic Chapter Content
+
+* AI-generated chapter explanations
+* Structured learning content
+* Markdown-supported content rendering
+* Progressive learning experience
+
+### Video Resource Integration
+
+* Automatic YouTube resource discovery
+* Contextual learning videos for each chapter
+* Embedded video support
+
+### Authentication & User Management
+
+* Clerk Authentication
+* Secure sign-up and sign-in
+* User-specific course management
+* Protected routes
+
+### Dashboard
+
+* Create and manage courses
+* View generated courses
+* Explore learning content
+* Track created learning resources
+
+### Sharing & Publishing
+
+* Publish generated courses
+* Share via LinkedIn
+* Share via WhatsApp
+* Share via Email
 
 ---
 
 ## Tech Stack
 
-- **Frontend**: Next.js 15 with App Router and Tailwind CSS for modern styling.
-- **Backend**: API routes with Gemini for AI-powered course content generation.
-- **Video Integration**: YouTube Data API v3 for embedding relevant videos into courses.
-- **Styling**: Tailwind CSS for responsive design.
-- **Authentication**: Clerk integration for user management.
-- **Deployment**: Vercel for seamless hosting and scaling.
-- **Database**: PostgreSQL with Drizzle ORM.
+### Frontend
+
+* Next.js 15 (App Router)
+* React 18
+* Tailwind CSS
+* Shadcn UI
+* Radix UI
+
+### Backend & APIs
+
+* Google Gemini AI
+* YouTube Data API
+* Next.js Server Components
+
+### Database
+
+* PostgreSQL (Neon)
+* Drizzle ORM
+
+### Authentication
+
+* Clerk Authentication
+
+### Additional Services
+
+* Firebase
+* Axios
+* React Markdown
 
 ---
 
-## Getting Started
+## Project Architecture
 
-1. Clone the repository:
+User Input
 
-   ```bash
-   git clone <your-repo-url>
-   cd ai-course-generator
-   ```
+↓
 
-2. Install dependencies:
+Course Generation Request
 
-   ```bash
-   npm install
-   ```
+↓
 
-3. Set up environment variables:
-   - Add your **Gemini API key** and **YouTube Data API v3 key** in an `.env` file:
+Gemini AI
 
-     ```bash
-     GEMINI_API_KEY=your-gemini-api-key
-     YOUTUBE_API_KEY=your-youtube-api-key
-     ```
+↓
 
-4. Run the development server:
+Course Structure Generation
 
-   ```bash
-   npm run dev
-   ```
+↓
 
-5. Open your browser and navigate to:
+PostgreSQL Storage (Drizzle ORM)
 
-   ```
-   http://localhost:3000
-   ```
+↓
 
----
+Dashboard Management
 
-## Deployment
+↓
 
-This project is deployed using [Vercel](https://vercel.com).  
-To deploy your version, push changes to your GitHub repository and link it with Vercel for automatic deployment.
+Chapter Content Generation
+
+↓
+
+YouTube Resource Integration
+
+↓
+
+Published Learning Experience
 
 ---
 
-## Contributing
+## Folder Structure
 
-Contributions are welcome! Feel free to:
+app/
+├── dashboard/
+├── create-course/
+├── course/
+├── (auth)/
+├── _components/
+├── _context/
 
-- Fork the repository
-- Create a branch for your feature or bugfix
-- Submit a pull request for review
+configs/
+├── AiModel.jsx
+├── db.jsx
+├── schema.jsx
+├── service.jsx
+
+components/
+└── ui/
 
 ---
 
-## Links
+## Key Learning Outcomes
 
-- **GitHub Repository**: https://github.com/PARAG-TIWARI/ai-powered-course-generator
--  
+* Full-stack application development
+* AI integration with Gemini API
+* Authentication and authorization
+* Database design with PostgreSQL
+* ORM implementation using Drizzle
+* Dynamic routing in Next.js
+* External API integration
+* SaaS-style application architecture
 
 ---
 
-`Thank You :)`
+## Future Improvements
+
+* Course progress tracking
+* Quiz generation
+* Certificates for completed courses
+* AI-powered assessments
+* Multi-language support
+* Course collaboration features
 
 ---
+
+## Author
+
+Parag Tiwari
+
+GitHub:
+https://github.com/PARAG-TIWARI
+
+Built as part of a Full Stack Web Development Internship project.
