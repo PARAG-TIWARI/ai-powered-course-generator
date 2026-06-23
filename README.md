@@ -1,44 +1,48 @@
-# CourseHub AI – AI Powered Course Generator
+# 🚀 CourseHub AI - AI Powered Course Generator
 
-CourseHub AI is a full-stack AI-powered learning platform that generates structured educational courses using Google Gemini AI. Users can create personalized learning roadmaps, generate chapter-wise content, discover relevant video resources, and manage courses through an authenticated dashboard.
+CourseHub AI is a full-stack AI-powered learning platform that generates structured educational courses using Google Gemini AI.
 
-## Features
+Users can create personalized learning roadmaps, generate chapter-wise content, discover relevant video resources, and manage courses through an authenticated dashboard.
 
-### AI Course Generation
+---
+
+## ✨ Features
+
+### 🤖 AI Course Generation
 
 * Generate complete course structures using Gemini AI
 * Automatic chapter creation
 * Course descriptions and learning paths
 * Multiple difficulty levels
 
-### Dynamic Chapter Content
+### 📚 Dynamic Chapter Content
 
 * AI-generated chapter explanations
 * Structured learning content
 * Markdown-supported content rendering
 * Progressive learning experience
 
-### Video Resource Integration
+### 🎥 Video Resource Integration
 
 * Automatic YouTube resource discovery
 * Contextual learning videos for each chapter
 * Embedded video support
 
-### Authentication & User Management
+### 🔐 Authentication & User Management
 
 * Clerk Authentication
 * Secure sign-up and sign-in
 * User-specific course management
 * Protected routes
 
-### Dashboard
+### 📊 Dashboard
 
 * Create and manage courses
 * View generated courses
 * Explore learning content
 * Track created learning resources
 
-### Sharing & Publishing
+### 🌐 Sharing & Publishing
 
 * Publish generated courses
 * Share via LinkedIn
@@ -47,32 +51,32 @@ CourseHub AI is a full-stack AI-powered learning platform that generates structu
 
 ---
 
-## Tech Stack
+# 🛠️ Tech Stack
 
-### Frontend
+## Frontend
 
 * Next.js 15 (App Router)
-* React 18
+* React.js
 * Tailwind CSS
 * Shadcn UI
 * Radix UI
 
-### Backend & APIs
+## Backend & APIs
 
 * Google Gemini AI
 * YouTube Data API
-* Next.js Server Components
+* Next.js API Routes
 
-### Database
+## Database
 
 * PostgreSQL (Neon)
 * Drizzle ORM
 
-### Authentication
+## Authentication
 
 * Clerk Authentication
 
-### Additional Services
+## Additional Services
 
 * Firebase
 * Axios
@@ -80,46 +84,41 @@ CourseHub AI is a full-stack AI-powered learning platform that generates structu
 
 ---
 
-## Project Architecture
+# 🏗️ System Architecture
 
+```text
 User Input
-
-↓
-
+    │
+    ▼
 Course Generation Request
-
-↓
-
+    │
+    ▼
 Gemini AI
-
-↓
-
+    │
+    ▼
 Course Structure Generation
-
-↓
-
+    │
+    ▼
 PostgreSQL Storage (Drizzle ORM)
-
-↓
-
+    │
+    ▼
 Dashboard Management
-
-↓
-
+    │
+    ▼
 Chapter Content Generation
-
-↓
-
+    │
+    ▼
 YouTube Resource Integration
-
-↓
-
+    │
+    ▼
 Published Learning Experience
+```
 
 ---
 
-## Folder Structure
+# 📂 Project Structure
 
+```text
 app/
 ├── dashboard/
 ├── create-course/
@@ -136,38 +135,91 @@ configs/
 
 components/
 └── ui/
+```
 
 ---
 
-## Key Learning Outcomes
+# 🎯 Key Learning Outcomes
 
-* Full-stack application development
-* AI integration with Gemini API
-* Authentication and authorization
-* Database design with PostgreSQL
-* ORM implementation using Drizzle
-* Dynamic routing in Next.js
-* External API integration
-* SaaS-style application architecture
+Through this project, I gained hands-on experience in:
 
----
-
-## Future Improvements
-
-* Course progress tracking
-* Quiz generation
-* Certificates for completed courses
-* AI-powered assessments
-* Multi-language support
-* Course collaboration features
+* Full Stack Application Development
+* AI Integration using Gemini API
+* Authentication and Authorization
+* Database Design with PostgreSQL
+* ORM Implementation using Drizzle ORM
+* Dynamic Routing in Next.js
+* External API Integration
+* SaaS-style Application Architecture
+* State Management and Component Design
 
 ---
 
-## Author
+# ⚡ Installation
 
-Parag Tiwari
+## Clone Repository
+
+```bash
+git clone https://github.com/PARAG-TIWARI/ai-powered-course-generator.git
+```
+
+## Navigate to Project
+
+```bash
+cd ai-powered-course-generator
+```
+
+## Install Dependencies
+
+```bash
+npm install
+```
+
+## Create Environment Variables
+
+```env
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
+CLERK_SECRET_KEY=
+
+NEXT_PUBLIC_DATABASE_URL=
+
+NEXT_PUBLIC_GEMINI_API_KEY=
+
+YOUTUBE_API_KEY=
+```
+
+## Run Development Server
+
+```bash
+npm run dev
+```
+
+---
+
+# 🚀 Future Improvements
+
+* Course Progress Tracking
+* AI Generated Quizzes
+* Learning Analytics Dashboard
+* Certificates for Completed Courses
+* Multi-language Support
+* AI-powered Assessments
+* Collaborative Learning Features
+
+---
+
+# 👨‍💻 Author
+
+**Parag Tiwari**
+
+B.Tech CSE Student | Full Stack Developer | AI Enthusiast
 
 GitHub:
 https://github.com/PARAG-TIWARI
 
-Built as part of a Full Stack Web Development Internship project.
+LinkedIn:
+https://www.linkedin.com/in/parag-tiwari
+
+---
+
+⭐ If you found this project useful, consider giving it a star.
