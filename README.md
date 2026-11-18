@@ -1,225 +1,164 @@
-# 🚀 CourseHub AI - AI Powered Course Generator
+# CourseHub AI — Course Generator
 
-CourseHub AI is a full-stack AI-powered learning platform that generates structured educational courses using Google Gemini AI.
+CourseHub AI is a full-stack learning application prototype that uses Google Gemini to generate course outlines and chapter content. It also lets users organise courses in a dashboard, attach learning videos from YouTube, and publish/share course pages.
 
-Users can create personalized learning roadmaps, generate chapter-wise content, discover relevant video resources, and manage courses through an authenticated dashboard.
+The repository demonstrates a combination of Generative AI integration, Next.js application development, authentication, relational data modelling and third-party API use.
 
----
+> **Project status:** This repository is a development/portfolio project. It does not include a verified live-demo URL. The current implementation still has an important server/client boundary issue documented in [Architecture and security review](docs/architecture-and-security-review.md). Do not describe the current code as production-secure until that remediation is completed and tested.
 
-## ✨ Features
+## Main functionality
 
-### 🤖 AI Course Generation
+- Generate a course outline from a topic, category, level, duration and requested chapter count.
+- Generate chapter-level explanations and optional code examples.
+- Search YouTube for relevant video resources for chapters.
+- Save and manage course records and generated chapter content.
+- Edit course titles, descriptions and chapter information.
+- Upload course banner images through Firebase Storage.
+- Sign in through Clerk and view a user dashboard.
+- Publish and share course pages using a course-specific URL.
 
-* Generate complete course structures using Gemini AI
-* Automatic chapter creation
-* Course descriptions and learning paths
-* Multiple difficulty levels
+Generated learning material should be reviewed before being shared or relied on. The application does not currently demonstrate an independent factuality, citation or curriculum-quality evaluation process.
 
-### 📚 Dynamic Chapter Content
+## Technology
 
-* AI-generated chapter explanations
-* Structured learning content
-* Markdown-supported content rendering
-* Progressive learning experience
+| Area | Technology |
+| --- | --- |
+| Framework | Next.js 15 App Router |
+| UI | React 18, Tailwind CSS, Radix UI / shadcn-style components |
+| Generative AI | Google Gemini API through @google/generative-ai |
+| Database | Neon serverless PostgreSQL |
+| ORM / schema | Drizzle ORM |
+| Authentication | Clerk |
+| Video discovery | YouTube Data API |
+| File storage | Firebase Storage |
+| Other libraries | Axios, React Markdown, React Share |
 
-### 🎥 Video Resource Integration
+## High-level feature flow
 
-* Automatic YouTube resource discovery
-* Contextual learning videos for each chapter
-* Embedded video support
+~~~mermaid
+flowchart TD
+    USER[User enters course preferences] --> LAYOUT[Gemini generates course outline]
+    LAYOUT --> REVIEW[User reviews / edits outline]
+    REVIEW --> SAVE[Course record stored in PostgreSQL]
+    SAVE --> CHAPTER[Generate chapter content with Gemini]
+    CHAPTER --> VIDEO[Optionally search YouTube resources]
+    VIDEO --> STORE[Save chapter content and video IDs]
+    STORE --> PUBLISH[Publish course]
+    PUBLISH --> SHARE[Share course page]
+~~~
 
-### 🔐 Authentication & User Management
+This is the intended product workflow. The current source places several database and AI integrations in client-component dependency paths; see the security review before treating the flow as a production architecture.
 
-* Clerk Authentication
-* Secure sign-up and sign-in
-* User-specific course management
-* Protected routes
+## Repository structure
 
-### 📊 Dashboard
-
-* Create and manage courses
-* View generated courses
-* Explore learning content
-* Track created learning resources
-
-### 🌐 Sharing & Publishing
-
-* Publish generated courses
-* Share via LinkedIn
-* Share via WhatsApp
-* Share via Email
-
----
-
-# 🛠️ Tech Stack
-
-## Frontend
-
-* Next.js 15 (App Router)
-* React.js
-* Tailwind CSS
-* Shadcn UI
-* Radix UI
-
-## Backend & APIs
-
-* Google Gemini AI
-* YouTube Data API
-* Next.js API Routes
-
-## Database
-
-* PostgreSQL (Neon)
-* Drizzle ORM
-
-## Authentication
-
-* Clerk Authentication
-
-## Additional Services
-
-* Firebase
-* Axios
-* React Markdown
-
----
-
-# 🏗️ System Architecture
-
-```text
-User Input
-    │
-    ▼
-Course Generation Request
-    │
-    ▼
-Gemini AI
-    │
-    ▼
-Course Structure Generation
-    │
-    ▼
-PostgreSQL Storage (Drizzle ORM)
-    │
-    ▼
-Dashboard Management
-    │
-    ▼
-Chapter Content Generation
-    │
-    ▼
-YouTube Resource Integration
-    │
-    ▼
-Published Learning Experience
-```
-
----
-
-# 📂 Project Structure
-
-```text
+~~~text
 app/
-├── dashboard/
-├── create-course/
-├── course/
-├── (auth)/
-├── _components/
-├── _context/
+├── (auth)/                  # Clerk sign-in and sign-up pages
+├── dashboard/               # User dashboard and course discovery
+├── create-course/            # Course creation and chapter generation
+├── course/                   # Published course pages and chapter reader
+├── _components/              # Shared landing-page components
+└── _context/                 # Client-side user input and course state
 
 configs/
-├── AiModel.jsx
-├── db.jsx
-├── schema.jsx
-├── service.jsx
+├── AiModel.jsx               # Gemini model configuration
+├── db.jsx                    # Neon + Drizzle database client
+├── schema.jsx                # Drizzle table definitions
+├── service.jsx               # YouTube Data API helper
+└── firebaseConfig.jsx        # Firebase web SDK configuration
 
-components/
-└── ui/
-```
+drizzle/                      # SQL migrations and schema snapshots
+components/ui/                 # Reusable UI components
+hooks/                         # Client-side hooks
+public/                        # Static assets
+middleware.js                  # Clerk route protection
+~~~
 
----
+## Local development
 
-# 🎯 Key Learning Outcomes
+### Prerequisites
 
-Through this project, I gained hands-on experience in:
+- Node.js version compatible with the Next.js version in package.json.
+- npm.
+- A Clerk application.
+- A Neon PostgreSQL database.
+- Google Gemini API access.
+- YouTube Data API access, if video discovery is enabled.
+- Firebase Storage configuration, if banner uploads are used.
 
-* Full Stack Application Development
-* AI Integration using Gemini API
-* Authentication and Authorization
-* Database Design with PostgreSQL
-* ORM Implementation using Drizzle ORM
-* Dynamic Routing in Next.js
-* External API Integration
-* SaaS-style Application Architecture
-* State Management and Component Design
+### Install dependencies
 
----
-
-# ⚡ Installation
-
-## Clone Repository
-
-```bash
+~~~bash
 git clone https://github.com/PARAG-TIWARI/ai-powered-course-generator.git
-```
-
-## Navigate to Project
-
-```bash
 cd ai-powered-course-generator
-```
-
-## Install Dependencies
-
-```bash
 npm install
-```
+~~~
 
-## Create Environment Variables
+### Environment configuration
 
-```env
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=
-CLERK_SECRET_KEY=
+The current source reads the following environment variable names:
 
-NEXT_PUBLIC_DATABASE_URL=
+| Variable | Intended use |
+| --- | --- |
+| NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY | Clerk browser publishable key |
+| CLERK_SECRET_KEY | Clerk server secret |
+| DB_CONNECTION_STRING | Neon PostgreSQL connection string |
+| GEMINI_API_KEY | Gemini API key |
+| YOUTUBE_API_KEY | YouTube Data API key |
+| NEXT_PUBLIC_FIREBASE_API_KEY | Firebase browser configuration |
+| NEXT_PUBLIC_HOST_NAME | Base URL used to create share links |
 
-NEXT_PUBLIC_GEMINI_API_KEY=
+**Security warning:** Do not change the database, Gemini or YouTube credentials to NEXT_PUBLIC_*. Next.js exposes variables with that prefix to browser code. The current app imports database and AI modules from client components, so simply copying private keys into environment variables is not a safe production configuration. Follow the server-side remediation described in [Architecture and security review](docs/architecture-and-security-review.md) before deploying with privileged credentials.
 
-YOUTUBE_API_KEY=
-```
+Firebase's browser API key is part of the web SDK configuration; access to stored files must be controlled by Firebase Storage Rules. A Firebase API key alone is not an authorization boundary.
 
-## Run Development Server
+### Database setup
 
-```bash
+The project includes Drizzle configuration and SQL migrations. Review the schema and target database before applying changes.
+
+~~~bash
+npm run db:generate
+npm run db:push
+~~~
+
+Use a development database. Do not run schema changes against a production database without a backup and reviewed migration plan.
+
+### Start the development server
+
+~~~bash
 npm run dev
-```
+~~~
 
----
+Open http://localhost:3000.
 
-# 🚀 Future Improvements
+## Scripts
 
-* Course Progress Tracking
-* AI Generated Quizzes
-* Learning Analytics Dashboard
-* Certificates for Completed Courses
-* Multi-language Support
-* AI-powered Assessments
-* Collaborative Learning Features
+| Command | Purpose |
+| --- | --- |
+| npm run dev | Start the Next.js development server |
+| npm run build | Build the Next.js application |
+| npm run start | Start the built application |
+| npm run lint | Run the configured Next.js lint command |
+| npm run db:generate | Generate Drizzle migrations |
+| npm run db:push | Push the current schema to the configured database |
+| npm run db:studio | Open Drizzle Studio |
 
----
+## Current engineering priorities
 
-# 👨‍💻 Author
+1. Move Neon database access out of client components and into authenticated server actions or Route Handlers.
+2. Move Gemini and YouTube API calls to server-only modules or Route Handlers.
+3. Enforce course ownership on the server for reads, edits, publishing and deletion.
+4. Enforce public-course rules on the server before returning course content.
+5. Validate AI-generated JSON before storing it and handle malformed/blocked responses.
+6. Add rate limits, usage limits and safe error responses around paid AI/API calls.
+7. Add tests for authentication, ownership checks, course generation and chapter workflows.
+8. Confirm Firebase Storage Rules restrict uploads and deletion to the correct authenticated user.
 
-**Parag Tiwari**
+See [Architecture and security review](docs/architecture-and-security-review.md) for the repository-specific findings and a staged remediation plan.
 
-B.Tech CSE Student | Full Stack Developer | AI Enthusiast
+## Author
 
-GitHub:
-https://github.com/PARAG-TIWARI
+**Parag Tiwari**  
+B.Tech Computer Science and Engineering student, graduating 2027.
 
-LinkedIn:
-https://www.linkedin.com/in/parag-tiwari
-
----
-
-⭐ If you found this project useful, consider giving it a star.
+[GitHub profile](https://github.com/PARAG-TIWARI) · [CourseHub repository](https://github.com/PARAG-TIWARI/ai-powered-course-generator)
